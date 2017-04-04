@@ -1,0 +1,33 @@
+<row>
+    <col2></col2>
+    <col8>
+        <box color="white">
+            <box-header>
+                <h3>Zoeken persoon</h3>
+            </box-header>
+            <div id="search-component">
+                <p>Vul een zoekterm in om een persoon te vinden.</p>
+                <in label="Zoekterm" name="Zoekterm" #searchBox id="search-box" (keyup)="search(searchBox.value)"></in>
+                <div class="box-grey-content" *ngIf="personen">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Achternaam</th>
+                                <th>Voorletters</th>
+                                <th>E-mail</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let persoon of (personen | async)" (click)="clickRow(persoon)">
+                                <td>{{ persoon.achternaam }}<span *ngIf="persoon.voorvoegsel">, </span>{{ persoon.voorvoegsel}}</td>
+                                <td>{{ persoon.voorletters }}</td>
+                                <td>{{ persoon.email }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </box>
+    </col8>
+    <col2></col2>
+</row>
